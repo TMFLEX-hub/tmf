@@ -45,6 +45,20 @@ export const navContent = {
     {
       label: "Explosion Proof Flexible Conduit",
       href: "/products/explosion-proof-fc",
+      items: [
+        {
+          label: "Copleflex ETGJH",
+          href: "/products/explosion-proof-fc/etgjh",
+        },
+        {
+          label: "Copleflex ETLK",
+          href: "/products/explosion-proof-fc/etlk",
+        },
+        {
+          label: "Copleflex ETGJH-SS",
+          href: "/products/explosion-proof-fc/etgjh-ss",
+        },
+      ],
     },
   ],
   companySubmenu: [
@@ -373,18 +387,17 @@ export const productCategoryContent = {
       imageSrc: "/images/explosionProofFlexibleConduit.jpg",
       imageAlt: "Explosion proof flexible conduit",
       title: "Explosion Proof Flexible Conduit",
-      body: "Flexible metallic conduit engineered for hazardous environments and applications that demand compliant, reliable protection.",
+      body: "Copleflex® flexible conduit couplings for Class I, II, and III hazardous locations—brass and all-stainless models plus the ETLK union configuration.",
       primaryCta: { label: "Contact Us", href: "/#contact" },
       secondaryCta: productCategoryHeroSecondary,
       heightClassName: productCategoryHeroHeight,
     },
     pageTitle: "Explosion Proof Flexible Conduit",
     paragraphs: [
-      "Explosion Proof Flexible Conduit solutions support installations where safety and code compliance are critical.",
-      "Certification details, product families, and specification tables are pending. Content will be expanded once the client provides the final narrative and datasheet mapping.",
+      "Copleflex® is a flexible, explosionproof conduit coupling that conducts and protects electrical wiring in classified locations, with corrugated stainless core, metallic braid, and insulating liner.",
+      "Choose a model below for construction materials, hazardous-location ratings by trade size, and imagery. Use the brochure link on this page for overview, illustrations, and dimensional tables.",
     ],
-    pendingSpecsBody:
-      "Explosion-proof product tables and reference PDFs will be linked or embedded here after the client confirms which materials belong under this category.",
+    pendingSpecsBody: "",
   },
 } as const;
 

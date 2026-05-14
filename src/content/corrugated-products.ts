@@ -26,8 +26,14 @@ export type IndustrialProductDetailContent = {
     footnotes: readonly string[];
     /** Renders built-in HTML matrix for N-type or P-type datasheet. */
     specMatrix?: "n-type" | "p-type";
+    /** Optional titled bullet lists (e.g. construction + compliance when no matrix). */
+    lists?: readonly { title: string; items: readonly string[] }[];
   };
   gallery: readonly { imageSrc: string; imageAlt: string }[];
+  /** Optional brochure link shown in the spec section (e.g. explosion-proof lines). */
+  datasheetPdf?: { label: string; href: string };
+  /** Optional certification / listing mark image beside the datasheet link. */
+  listingMark?: { imageSrc: string; imageAlt: string };
 };
 
 const contactCta = {

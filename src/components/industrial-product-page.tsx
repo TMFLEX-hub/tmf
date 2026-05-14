@@ -14,8 +14,17 @@ type IndustrialProductPageProps = {
 export function IndustrialProductPageView({
   content,
 }: IndustrialProductPageProps) {
-  const { breadcrumb, hero, lead, featuresHeading, features, spec, gallery } =
-    content;
+  const {
+    breadcrumb,
+    hero,
+    lead,
+    featuresHeading,
+    features,
+    spec,
+    gallery,
+    datasheetPdf,
+    listingMark,
+  } = content;
 
   return (
     <>
@@ -141,6 +150,51 @@ export function IndustrialProductPageView({
           <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted-foreground sm:text-lg">
             {spec.caption}
           </p>
+
+          {listingMark || datasheetPdf ? (
+            <div className="mt-8 flex flex-col gap-6 rounded-xl border border-border bg-background/70 p-6 sm:flex-row sm:items-center sm:justify-between">
+              {listingMark ? (
+                <div className="flex justify-center sm:justify-start">
+                  <Image
+                    src={listingMark.imageSrc}
+                    alt={listingMark.imageAlt}
+                    width={440}
+                    height={176}
+                    className="max-h-28 w-auto object-contain sm:max-h-32"
+                  />
+                </div>
+              ) : null}
+              {datasheetPdf ? (
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="w-full shrink-0 sm:w-auto"
+                >
+                  <a
+                    href={datasheetPdf.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {datasheetPdf.label}
+                  </a>
+                </Button>
+              ) : null}
+            </div>
+          ) : null}
+
+          {spec.lists?.map((list) => (
+            <div key={list.title} className="mt-10">
+              <h3 className="text-lg font-semibold text-foreground sm:text-xl">
+                {list.title}
+              </h3>
+              <ul className="mt-4 list-disc space-y-2 pl-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
+                {list.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
 
           {spec.specMatrix === "n-type" ? (
             <div className="mt-8">
