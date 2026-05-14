@@ -22,7 +22,6 @@ export type IndustrialProductDetailContent = {
   features: readonly string[];
   spec: {
     heading: string;
-    caption: string;
     footnotes: readonly string[];
     /** Renders built-in HTML matrix for N-type or P-type datasheet. */
     specMatrix?: "n-type" | "p-type";
@@ -76,8 +75,6 @@ export const corrugatedNTypeContent = {
   ],
   spec: {
     heading: "Pressure ratings & dimensions",
-    caption:
-      "Nominal size, outside diameter, braid configuration, minimum bend radius, burst and MAWP pressures, and weight for each configuration.",
     specMatrix: "n-type",
     footnotes: [
       "Pressures listed may vary depending on assembly methods and are subject to a specific welding procedure. Other methods such as brazing, crimping or mechanical clamping may result in different pressures. Multiple braids can be added on request. Consult our technical department.",
@@ -121,8 +118,6 @@ export const corrugatedPTypeContent = {
   ],
   spec: {
     heading: "Pressure ratings & dimensions",
-    caption:
-      "Nominal size, outside diameter, braid configuration, minimum bend radius, burst and MAWP pressures, and weight for each configuration.",
     specMatrix: "p-type",
     footnotes: [
       "Pressures listed may vary depending on assembly methods and are subject to a specific welding procedure. Other methods such as brazing, crimping or mechanical clamping may result in different pressures. Consult our technical department.",

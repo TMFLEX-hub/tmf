@@ -147,9 +147,6 @@ export function IndustrialProductPageView({
           >
             {spec.heading}
           </h2>
-          <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            {spec.caption}
-          </p>
 
           {listingMark || datasheetPdf ? (
             <div className="mt-8 flex flex-col gap-6 rounded-xl border border-border bg-background/70 p-6 sm:flex-row sm:items-center sm:justify-between">

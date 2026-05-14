@@ -13,28 +13,9 @@ const explosionProofHubCta = {
   variant: "outline" as const,
 };
 
-const sharedLead = [
-  "Copleflex® is a flexible, explosionproof conduit coupling that conducts and protects electrical wiring in hazardous (classified) locations.",
-  "It is primarily used where a flexible component is required for difficult bends and to absorb vibration and movement of connected equipment in electrical conduit systems. The hermetic seal supports humid environments with liquids, dust, or gases—common in refineries, fueling stations, oil and gas facilities, emergency power plants, mines, and similar installations.",
-] as const;
-
-const sharedFeatureBullets = [
-  "Explosion proof, dust-ignition proof, and waterproof.",
-  "Corrugated metallic internal body rated to withstand explosive pressure (Class I) and mechanical abuse.",
-  "Outer metallic braid provides a continuous electrical path.",
-  "Interior insulating liner helps prevent electrical arcs, limits grounding risk from short circuits, limits flame propagation, and protects conductors from abrasion under vibration.",
-  "NPT fittings for tight, rigid joints and ground continuity.",
-] as const;
-
-const sharedComplianceItems = [
-  "½″ and ¾″ trade sizes: Class I, Division 1 and 2, Groups A, B, C, and D.",
-  "1″ through 2″ trade sizes: Class I, Division 1 and 2, Groups C and D.",
-  "All sizes may also be installed in Class II, Division 1, Groups E, F, and G; Class II, Division 2, Groups F and G; and Class III locations.",
-] as const;
-
 const sharedFootnotes = [
-  "Custom lengths are available—consult your TMFlex representative.",
-  "Due to ongoing product improvements, specifications may change without notice.",
+  "Custom lengths can be manufactured. Please consult your representative.",
+  "*Due to ongoing product improvements, the information contained in this brochure may be modified. Therefore, the specifications may vary.",
 ] as const;
 
 export const explosionProofBrochurePdf = {
@@ -47,14 +28,32 @@ export const explosionProofUlListingMark = {
   imageAlt: "UL Listed mark for Copleflex explosion proof flexible coupling",
 } as const;
 
-const specCaption =
-  "Hazardous-location groupings depend on conduit trade size. For product overview, illustrations, and dimensional tables, use the manufacturer brochure (PDF). Contact TMFlex for the latest revision or application-specific guidance.";
+const etgjhLead = [
+  "Copleflex® is a flexible, explosionproof conduit coupling that conducts and protects electrical wiring in hazardous (classified) locations.",
+  "Main applications: Copleflex® is primarily used where a flexible component is required to accomplish difficult bends and/or to absorb vibration and movement of connected equipment in electrical conduit systems.",
+  "Copleflex® hermetic seal allows it to be installed in humid environments in the presence of liquids, dust, or gases. It is an essential component in refineries, gas and gasoline service stations, oil & gas platforms, emergency power plants, mines, etc.",
+] as const;
+
+const etgjhFeatures = [
+  "Explosion proof, dust-ignition proof, waterproof.",
+  "Corrugated metallic internal body that withstands explosive pressure (Class I) and mechanical abuse.",
+  "Outer metallic braid provides continuous electrical path.",
+  "Interior insulating liner prevents the formation of electrical arcs, protects against potential grounding caused by a short circuit in the lines, prevents flame propagation, and protects conductors from abrasion under vibration conditions.",
+  "NPT fittings for tight, rigid joints and ground continuity.",
+  "Male NPT threaded connection on both outer ends.",
+] as const;
+
+const etgjhComplianceItems = [
+  '½" Ø y ¾" Ø Clase I, Div. 1 & 2, Grupos A, B, C Y D',
+  '1" Ø a 2" Ø Clase I, Div. 1 & 2, Grupos C Y D',
+  "All diameters can be used in Class II, Division 1, Groups E, F, G.",
+] as const;
 
 export const explosionProofEtgjhContent = {
   slug: "etgjh",
   pageTitle: "Copleflex® ETGJH — Explosion Proof Flexible Conduit",
   metaDescription:
-    "Copleflex® ETGJH flexible explosionproof conduit coupling — brass NPT ends, 300-series stainless corrugated core, brass braid, and hazardous-location ratings.",
+    "Copleflex® ETGJH flexible explosionproof conduit coupling — brass NPT ends, 300-series stainless corrugated core, brass braid, hermetic seal, and hazardous-location ratings.",
   breadcrumb: [
     { label: "Products", href: "/products" },
     {
@@ -65,34 +64,31 @@ export const explosionProofEtgjhContent = {
   ],
   hero: {
     imageSrc: "/images/products/explosion-proof/etgjh.jpg",
-    imageAlt: "Copleflex ETGJH explosion proof flexible conduit with male NPT brass fittings",
+    imageAlt:
+      "Copleflex ETGJH explosion proof flexible conduit with male NPT brass fittings",
     title: "Copleflex® model ETGJH",
-    body: "Flexible explosionproof conduit coupling with forged brass male NPT on both ends, 300-series stainless corrugated core, and brass wire mesh braid.",
+    body: "Flexible explosionproof conduit coupling with forged brass male NPT on both ends, AISI 300-series stainless corrugated core, brass wire mesh braid, and insulating inner sheath.",
     primaryCta: contactCta,
     secondaryCta: explosionProofHubCta,
   },
-  lead: sharedLead,
+  lead: etgjhLead,
   featuresHeading: "Features",
-  features: [
-    ...sharedFeatureBullets,
-    "Male NPT threaded connection on both outer ends.",
-  ],
+  features: etgjhFeatures,
   spec: {
     heading: "Compliance & datasheet",
-    caption: specCaption,
     lists: [
       {
         title: "Construction materials",
         items: [
-          "NPT male threaded connections: forged brass.",
-          "Flexible metal tubing: AISI 300-series stainless steel.",
-          "Braid: brass wire mesh.",
-          "Inner layer: insulating sheath.",
+          "NPT male threaded connections in forged brass.",
+          "Flexible metal tubing in AISI 300 series stainless steel.",
+          "Brass wire mesh.",
+          "Insulating inner sheath.",
         ],
       },
       {
-        title: "Hazardous location ratings",
-        items: [...sharedComplianceItems],
+        title: "Compliance",
+        items: [...etgjhComplianceItems],
       },
     ],
     footnotes: [...sharedFootnotes],
@@ -102,11 +98,33 @@ export const explosionProofEtgjhContent = {
   listingMark: explosionProofUlListingMark,
 } as const satisfies IndustrialProductDetailContent;
 
+const etlkLead = [
+  "Copleflex® is a flexible, explosionproof conduit coupling that conducts and protects electrical wiring in hazardous (classified) locations.",
+  "Main applications: Copleflex® is primarily used where a flexible component is required to accomplish difficult bends and/or to absorb vibration and movement of connected equipment in electrical conduit systems.",
+  "Copleflex® hermetic seal allows it to be installed in humid environments in the presence of liquids, dust, or gases. It is an essential component in refineries, gas and gasoline service stations, oil & gas platforms, emergency power plants, mines, etc.",
+] as const;
+
+const etlkFeatures = [
+  "Explosion proof, dust-ignition proof, waterproof.",
+  "Corrugated metallic internal body that withstands explosive pressure (Class I) and mechanical abuse.",
+  "Outer metallic braid provides continuous electrical path.",
+  "Interior insulating liner prevents the formation of electrical arcs, protects against potential grounding caused by a short circuit in the lines, prevents flame propagation, and protects conductors from abrasion under vibration conditions.",
+  "NPT fittings for tight, rigid joints and ground continuity.",
+  "The ETLK flexible coupling is made up of a Copleflex® model ETGJH and it has an integrated UL female union nut at one end that is explosionproof.",
+] as const;
+
+const etlkComplianceItems = [
+  '½" Ø y ¾" Ø Clase I, Div. 1 & 2, Grupos A, B, C Y D',
+  '1" Ø a 2" Ø Clase I, Div. 1 & 2, Grupos C Y D',
+  "All diameters can be used in Class II, Division 1, Groups E, F, G.",
+  "Division 2, Groups F, G and Class III.",
+] as const;
+
 export const explosionProofEtlkContent = {
   slug: "etlk",
   pageTitle: "Copleflex® ETLK — Explosion Proof Flexible Coupling",
   metaDescription:
-    "Copleflex® ETLK combines ETGJH flexible conduit with an integrated UL explosionproof female union nut—copper-free aluminum union, brass male NPT, stainless core.",
+    "Copleflex® ETLK is built from ETGJH with an integrated UL explosionproof female union nut—copper-free aluminum union, forged brass male NPT, AISI 300-series stainless core, and brass braid.",
   breadcrumb: [
     { label: "Products", href: "/products" },
     {
@@ -119,33 +137,29 @@ export const explosionProofEtlkContent = {
     imageSrc: "/images/products/explosion-proof/etlk-hero.webp",
     imageAlt: "Copleflex ETLK explosion proof flexible coupling with union nut",
     title: "Copleflex® model ETLK",
-    body: "ETGJH-based flexible coupling with an integrated UL-listed explosionproof female union nut at one end for faster, compliant terminations.",
+    body: "Made from Copleflex® model ETGJH with an integrated UL explosionproof female union nut at one end (copper-free aluminum).",
     primaryCta: contactCta,
     secondaryCta: explosionProofHubCta,
   },
-  lead: sharedLead,
+  lead: etlkLead,
   featuresHeading: "Features",
-  features: [
-    ...sharedFeatureBullets,
-    "The ETLK flexible coupling is built on Copleflex® model ETGJH with an integrated UL-listed explosionproof female union nut at one end.",
-  ],
+  features: etlkFeatures,
   spec: {
     heading: "Compliance & datasheet",
-    caption: specCaption,
     lists: [
       {
         title: "Construction materials",
         items: [
-          "NPT male threaded connections: forged brass.",
-          "NPT female threaded union nut: copper-free aluminum.",
-          "Flexible metal tubing: AISI 300-series stainless steel.",
-          "Braid: brass wire mesh.",
-          "Inner layer: insulating sleeve.",
+          "NPT male threaded connections in forged brass.",
+          "NPT female threaded union nut: Copper-free aluminum.",
+          "Flexible metal tubing in AISI 300 series stainless steel.",
+          "Brass wire mesh.",
+          "Insulating inner sleeve.",
         ],
       },
       {
-        title: "Hazardous location ratings",
-        items: [...sharedComplianceItems],
+        title: "Compliance",
+        items: [...etlkComplianceItems],
       },
     ],
     footnotes: [...sharedFootnotes],
@@ -160,11 +174,34 @@ export const explosionProofEtlkContent = {
   listingMark: explosionProofUlListingMark,
 } as const satisfies IndustrialProductDetailContent;
 
+const etgjhSsLead = [
+  "Copleflex® is a flexible, explosionproof conduit coupling that conducts and protects electrical wiring in hazardous (classified) locations.",
+  "Main applications: Copleflex® is primarily used where a flexible component is required to accomplish difficult bends and/or to absorb vibration and movement of connected equipment in electrical conduit systems.",
+  "Copleflex® hermetic seal allows it to be installed in humid environments in the presence of liquids, dust, or gases. It is an essential component in refineries, gas and gasoline service stations, oil & gas platforms, emergency power plants, mines, etc.",
+] as const;
+
+const etgjhSsFeatures = [
+  "Explosion proof, dust-ignition proof, waterproof.",
+  "Corrugated metallic internal body that withstands explosive pressure (Class I) and mechanical abuse.",
+  "Outer metallic braid provides continuous electrical path.",
+  "Interior insulating liner prevents the formation of electrical arcs, protects against potential grounding caused by a short circuit in the lines, prevents flame propagation, and protects conductors from abrasion under vibration conditions.",
+  "NPT fittings for tight, rigid joints and ground continuity.",
+  "Male NPT threaded connection on both outer ends.",
+] as const;
+
+const etgjhSsComplianceItems = [
+  '½" Ø y ¾" Ø Clase I, Div. 1 & 2, Grupos A, B, C Y D',
+  '1" Ø a 2" Ø Clase I, Div. 1 & 2, Grupos C Y D',
+  "All diameters can be used in Class II, Division 1, Groups E, F, G.",
+  "Division 2, Groups F, G, and Class III.",
+] as const;
+
 export const explosionProofEtgjhSsContent = {
   slug: "etgjh-ss",
-  pageTitle: "Copleflex® ETGJH-SS — All-Stainless Explosion Proof Flexible Conduit",
+  pageTitle:
+    "Copleflex® ETGJH-SS — All-Stainless Explosion Proof Flexible Conduit",
   metaDescription:
-    "Copleflex® ETGJH-SS explosionproof flexible conduit — AISI 300-series stainless NPT fittings, corrugated core, stainless mesh, and hazardous-location ratings.",
+    "Copleflex® ETGJH-SS explosionproof flexible conduit — AISI 300-series male NPT, corrugated stainless tubing, stainless mesh, insulating inner sleeve, and hazardous-location ratings.",
   breadcrumb: [
     { label: "Products", href: "/products" },
     {
@@ -175,34 +212,31 @@ export const explosionProofEtgjhSsContent = {
   ],
   hero: {
     imageSrc: "/images/products/explosion-proof/etgjh-ss-hero.webp",
-    imageAlt: "Copleflex ETGJH-SS all-stainless explosion proof flexible conduit",
+    imageAlt:
+      "Copleflex ETGJH-SS all-stainless explosion proof flexible conduit",
     title: "Copleflex® model ETGJH-SS",
-    body: "All–300-series stainless construction—male NPT fittings, corrugated tubing, and braid—for corrosive or washdown-heavy environments.",
+    body: "All-AISI 300-series stainless: male NPT connections, corrugated metal tubing, wire mesh braid, and insulating inner sleeve—for corrosive or washdown-heavy environments.",
     primaryCta: contactCta,
     secondaryCta: explosionProofHubCta,
   },
-  lead: sharedLead,
+  lead: etgjhSsLead,
   featuresHeading: "Features",
-  features: [
-    ...sharedFeatureBullets,
-    "Male NPT threaded connection on both outer ends.",
-  ],
+  features: etgjhSsFeatures,
   spec: {
     heading: "Compliance & datasheet",
-    caption: specCaption,
     lists: [
       {
         title: "Construction materials",
         items: [
-          "NPT male threaded connections: AISI 300-series stainless steel.",
-          "Flexible metal tubing: AISI 300-series stainless steel.",
-          "Braid: AISI 300-series stainless steel mesh.",
-          "Inner layer: insulating sleeve.",
+          "NPT male threaded connections in AISI 300 series.",
+          "Flexible metal tubing in AISI 300 series stainless steel.",
+          "Mesh made of AISI 300 series stainless steel.",
+          "Insulating inner sleeve.",
         ],
       },
       {
-        title: "Hazardous location ratings",
-        items: [...sharedComplianceItems],
+        title: "Compliance",
+        items: [...etgjhSsComplianceItems],
       },
     ],
     footnotes: [...sharedFootnotes],
@@ -210,7 +244,8 @@ export const explosionProofEtgjhSsContent = {
   gallery: [
     {
       imageSrc: "/images/products/explosion-proof/etgjh-ss.jpg",
-      imageAlt: "Alternate view of Copleflex ETGJH-SS stainless flexible conduit",
+      imageAlt:
+        "Alternate view of Copleflex ETGJH-SS stainless flexible conduit",
     },
   ],
   datasheetPdf: explosionProofBrochurePdf,
