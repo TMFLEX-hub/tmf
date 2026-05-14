@@ -43,7 +43,7 @@ export const explosionProofBrochurePdf = {
 } as const;
 
 export const explosionProofUlListingMark = {
-  imageSrc: "/images/products/explosion-proof/ul-listed.jpg",
+  imageSrc: "/images/products/explosion-proof/ul-listed.webp",
   imageAlt: "UL Listed mark for Copleflex explosion proof flexible coupling",
 } as const;
 
@@ -116,7 +116,7 @@ export const explosionProofEtlkContent = {
     { label: "ETLK", href: "/products/explosion-proof-fc/etlk" },
   ],
   hero: {
-    imageSrc: "/images/products/explosion-proof/etlk-hero.png",
+    imageSrc: "/images/products/explosion-proof/etlk-hero.webp",
     imageAlt: "Copleflex ETLK explosion proof flexible coupling with union nut",
     title: "Copleflex® model ETLK",
     body: "ETGJH-based flexible coupling with an integrated UL-listed explosionproof female union nut at one end for faster, compliant terminations.",
@@ -174,7 +174,7 @@ export const explosionProofEtgjhSsContent = {
     { label: "ETGJH-SS", href: "/products/explosion-proof-fc/etgjh-ss" },
   ],
   hero: {
-    imageSrc: "/images/products/explosion-proof/etgjh-ss-hero.png",
+    imageSrc: "/images/products/explosion-proof/etgjh-ss-hero.webp",
     imageAlt: "Copleflex ETGJH-SS all-stainless explosion proof flexible conduit",
     title: "Copleflex® model ETGJH-SS",
     body: "All–300-series stainless construction—male NPT fittings, corrugated tubing, and braid—for corrosive or washdown-heavy environments.",

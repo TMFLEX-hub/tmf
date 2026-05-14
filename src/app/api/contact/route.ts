@@ -1,8 +1,19 @@
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(req: Request) {
+  const apiKey = process.env.RESEND_API_KEY;
+  const fromEmail = process.env.CONTACT_FROM_EMAIL;
+  const toEmail = process.env.CONTACT_TO_EMAIL;
+
+  if (!apiKey || !fromEmail || !toEmail) {
+    console.error("Contact API: missing RESEND_API_KEY, CONTACT_FROM_EMAIL, or CONTACT_TO_EMAIL");
+    return new Response(JSON.stringify({ error: "Server misconfigured" }), {
+      status: 500,
+    });
+  }
+
+  const resend = new Resend(apiKey);
+
   try {
     const body = await req.json();
 
@@ -45,8 +56,8 @@ export async function POST(req: Request) {
     const safeMessage = String(message).trim();
 
     await resend.emails.send({
-      from: `Website Contact <${process.env.CONTACT_FROM_EMAIL}>`,
-      to: process.env.CONTACT_TO_EMAIL as string,
+      from: `Website Contact <${fromEmail}>`,
+      to: toEmail,
       subject: `New contact from ${safeName}`,
       replyTo: `${safeName} <${safeEmail}>`,
       html: `

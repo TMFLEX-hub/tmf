@@ -58,7 +58,7 @@ export const corrugatedNTypeContent = {
     { label: "N-Type", href: "/products/corrugated-hose/n-type" },
   ],
   hero: {
-    imageSrc: "/images/N-TypeCorrugatedMetalHose.png",
+    imageSrc: "/images/N-TypeCorrugatedMetalHose.webp",
     imageAlt:
       "N-type stainless steel corrugated metal hose with stainless braid",
     title: "N-Type Stainless Steel Corrugated Metal Hose",
@@ -103,7 +103,7 @@ export const corrugatedPTypeContent = {
     { label: "P-Type", href: "/products/corrugated-hose/p-type" },
   ],
   hero: {
-    imageSrc: "/images/P-TypeCorrugatedMetalHose.png",
+    imageSrc: "/images/P-TypeCorrugatedMetalHose.webp",
     imageAlt:
       "P-type stainless steel corrugated metal hose with stainless braid",
     title: "P-Type Stainless Steel Corrugated Metal Hose",
