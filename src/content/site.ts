@@ -114,8 +114,8 @@ export const productsContent = {
     {
       title: "Explosion Proof Flexible Conduit",
       href: "/products/explosion-proof-fc",
-      imageSrc: "/images/explosionProofFlexibleConduit.jpg",
-      imageAlt: "Explosion proof flexible conduit",
+      imageSrc: "/images/products/explosion-proof/etgjh.jpg",
+      imageAlt: "Copleflex ETGJH explosion proof flexible conduit",
     },
   ],
 } as const;
@@ -384,8 +384,8 @@ export const productCategoryContent = {
   },
   explosionProofFc: {
     hero: {
-      imageSrc: "/images/explosionProofFlexibleConduit.jpg",
-      imageAlt: "Explosion proof flexible conduit",
+      imageSrc: "/images/products/explosion-proof/etgjh.jpg",
+      imageAlt: "Copleflex ETGJH explosion proof flexible conduit",
       title: "Explosion Proof Flexible Conduit",
       body: "Copleflex® flexible conduit couplings for Class I, II, and III hazardous locations—brass and all-stainless models plus the ETLK union configuration.",
       primaryCta: { label: "Contact Us", href: "/#contact" },

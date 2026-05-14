@@ -134,7 +134,7 @@ export const explosionProofEtlkContent = {
     { label: "ETLK", href: "/products/explosion-proof-fc/etlk" },
   ],
   hero: {
-    imageSrc: "/images/products/explosion-proof/etlk-hero.webp",
+    imageSrc: "/images/products/explosion-proof/etlk.jpg",
     imageAlt: "Copleflex ETLK explosion proof flexible coupling with union nut",
     title: "Copleflex® model ETLK",
     body: "Made from Copleflex® model ETGJH with an integrated UL explosionproof female union nut at one end (copper-free aluminum).",
@@ -164,12 +164,7 @@ export const explosionProofEtlkContent = {
     ],
     footnotes: [...sharedFootnotes],
   },
-  gallery: [
-    {
-      imageSrc: "/images/products/explosion-proof/etlk.jpg",
-      imageAlt: "Alternate view of Copleflex ETLK flexible coupling",
-    },
-  ],
+  gallery: [],
   datasheetPdf: explosionProofBrochurePdf,
   listingMark: explosionProofUlListingMark,
 } as const satisfies IndustrialProductDetailContent;
@@ -211,7 +206,7 @@ export const explosionProofEtgjhSsContent = {
     { label: "ETGJH-SS", href: "/products/explosion-proof-fc/etgjh-ss" },
   ],
   hero: {
-    imageSrc: "/images/products/explosion-proof/etgjh-ss-hero.webp",
+    imageSrc: "/images/products/explosion-proof/etgjh-ss.jpg",
     imageAlt:
       "Copleflex ETGJH-SS all-stainless explosion proof flexible conduit",
     title: "Copleflex® model ETGJH-SS",
@@ -241,13 +236,7 @@ export const explosionProofEtgjhSsContent = {
     ],
     footnotes: [...sharedFootnotes],
   },
-  gallery: [
-    {
-      imageSrc: "/images/products/explosion-proof/etgjh-ss.jpg",
-      imageAlt:
-        "Alternate view of Copleflex ETGJH-SS stainless flexible conduit",
-    },
-  ],
+  gallery: [],
   datasheetPdf: explosionProofBrochurePdf,
   listingMark: explosionProofUlListingMark,
 } as const satisfies IndustrialProductDetailContent;
