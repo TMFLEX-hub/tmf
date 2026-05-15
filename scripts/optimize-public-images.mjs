@@ -1,6 +1,6 @@
 /**
- * One-shot / repeatable: shrink images under public/images for web delivery.
- * Run: node scripts/optimize-public-images.mjs
+ * Shrink all raster images under public/images for web delivery.
+ * Run: npm run optimize-images
  */
 import fs from "node:fs/promises";
 import path from "node:path";
@@ -9,9 +9,34 @@ import sharp from "sharp";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, "..", "public", "images");
-const MAX_JPEG_EDGE = 1920;
-const JPEG_QUALITY = 82;
-const WEBP_QUALITY = 88;
+
+const JPEG_QUALITY = 78;
+const WEBP_QUALITY = 78;
+const SKIP_IF_UNDER_BYTES = 100_000;
+const PNG_COMPRESSION = 9;
+
+/** Max longest edge by use case (inferred from path/name). */
+function maxEdgeFor(filePath) {
+  const rel = path.relative(ROOT, filePath).replace(/\\/g, "/");
+  const base = path.basename(filePath).toLowerCase();
+
+  if (base.includes("ul-listed")) return 512;
+  if (base.includes("corner") || rel.includes("certificate")) return 1200;
+  if (
+    base.includes("n-typecorrugated") ||
+    base.includes("p-typecorrugated")
+  ) {
+    return 960;
+  }
+  if (rel.includes("products/corrugated/")) return 800;
+  if (base.includes("-hero.") || base.endsWith("-hero.webp")) return 1280;
+  if (rel.includes("products/explosion-proof/")) return 1536;
+  if (base.startsWith("homepage") || base.startsWith("hero")) return 1600;
+  if (rel.includes("1tmf") || rel.includes("2tmf") || rel.includes("3tmf")) {
+    return 1200;
+  }
+  return 1920;
+}
 
 async function walk(dir) {
   const out = [];
@@ -24,115 +49,131 @@ async function walk(dir) {
   return out;
 }
 
+function resizeInside(pipeline, w, h, maxEdge) {
+  const longest = Math.max(w, h);
+  if (longest <= maxEdge) return pipeline;
+  return pipeline.resize({
+    width: w >= h ? maxEdge : undefined,
+    height: h > w ? maxEdge : undefined,
+    fit: "inside",
+    withoutEnlargement: true,
+  });
+}
+
 async function optimizeJpeg(filePath) {
   const buf = await fs.readFile(filePath);
   const meta = await sharp(buf).metadata();
   if (meta.format !== "jpeg" && meta.format !== "jpg") {
-    return { filePath, skipped: `not jpeg (${meta.format})` };
+    return { skipped: `not jpeg (${meta.format})` };
   }
   const w = meta.width ?? 0;
   const h = meta.height ?? 0;
-  const longest = Math.max(w, h);
-  let pipeline = sharp(buf).rotate();
-  if (longest > MAX_JPEG_EDGE) {
-    pipeline = pipeline.resize({
-      width: w >= h ? MAX_JPEG_EDGE : undefined,
-      height: h > w ? MAX_JPEG_EDGE : undefined,
-      fit: "inside",
-      withoutEnlargement: true,
-    });
-  }
-  const out = await pipeline
+  const maxEdge = maxEdgeFor(filePath);
+  const out = await resizeInside(sharp(buf).rotate(), w, h, maxEdge)
     .jpeg({ quality: JPEG_QUALITY, mozjpeg: true, progressive: true })
     .toBuffer();
-  if (out.length >= buf.length * 0.98 && longest <= MAX_JPEG_EDGE) {
-    return { filePath, skipped: "already small" };
+  if (
+    buf.length < SKIP_IF_UNDER_BYTES &&
+    out.length >= buf.length * 0.97 &&
+    Math.max(w, h) <= maxEdge
+  ) {
+    return { skipped: "already small" };
   }
   await fs.writeFile(filePath, out);
-  return {
-    filePath,
-    before: buf.length,
-    after: out.length,
-  };
+  return { before: buf.length, after: out.length };
 }
 
-async function toWebp(srcPath, destPath, removeSrc) {
-  const buf = await fs.readFile(srcPath);
-  const out = await sharp(buf)
-    .rotate()
-    .webp({ quality: WEBP_QUALITY, alphaQuality: 100, effort: 6 })
+async function optimizeWebp(filePath) {
+  const buf = await fs.readFile(filePath);
+  const meta = await sharp(buf).metadata();
+  if (meta.format !== "webp") return { skipped: `not webp (${meta.format})` };
+  const w = meta.width ?? 0;
+  const h = meta.height ?? 0;
+  const maxEdge = maxEdgeFor(filePath);
+  const hasAlpha = meta.hasAlpha === true;
+  const out = await resizeInside(sharp(buf).rotate(), w, h, maxEdge)
+    .webp({
+      quality: WEBP_QUALITY,
+      alphaQuality: hasAlpha ? 90 : undefined,
+      effort: 6,
+    })
     .toBuffer();
-  await fs.writeFile(destPath, out);
-  if (removeSrc && path.resolve(srcPath) !== path.resolve(destPath)) {
-    await fs.unlink(srcPath);
+  if (
+    buf.length < SKIP_IF_UNDER_BYTES &&
+    out.length >= buf.length * 0.97 &&
+    Math.max(w, h) <= maxEdge
+  ) {
+    return { skipped: "already small" };
   }
-  return { srcPath, destPath, before: buf.length, after: out.length };
+  await fs.writeFile(filePath, out);
+  return { before: buf.length, after: out.length };
+}
+
+async function optimizePng(filePath) {
+  const buf = await fs.readFile(filePath);
+  const meta = await sharp(buf).metadata();
+  if (meta.format !== "png") return { skipped: `not png (${meta.format})` };
+  const w = meta.width ?? 0;
+  const h = meta.height ?? 0;
+  const maxEdge = maxEdgeFor(filePath);
+  const hasAlpha = meta.hasAlpha === true;
+
+  let pipeline = resizeInside(sharp(buf).rotate(), w, h, maxEdge);
+  if (hasAlpha) {
+    pipeline = pipeline.png({
+      compressionLevel: PNG_COMPRESSION,
+      adaptiveFiltering: true,
+      palette: w * h < 900_000,
+    });
+  } else {
+    pipeline = pipeline.png({
+      compressionLevel: PNG_COMPRESSION,
+      adaptiveFiltering: true,
+    });
+  }
+
+  const out = await pipeline.toBuffer();
+  if (
+    buf.length < SKIP_IF_UNDER_BYTES &&
+    out.length >= buf.length * 0.97 &&
+    Math.max(w, h) <= maxEdge
+  ) {
+    return { skipped: "already small" };
+  }
+  await fs.writeFile(filePath, out);
+  return { before: buf.length, after: out.length };
 }
 
 const files = await walk(ROOT);
+let saved = 0;
+let processed = 0;
 
-// 1) Misnamed ul-listed (PNG bytes as .jpg) -> .webp
-const ulListed = path.join(
-  ROOT,
-  "products/explosion-proof/ul-listed.jpg",
-);
-try {
-  await fs.access(ulListed);
-  const dest = path.join(ROOT, "products/explosion-proof/ul-listed.webp");
-  const r = await toWebp(ulListed, dest, true);
-  console.log("ul-listed:", r.before, "->", r.after, "bytes");
-} catch {
-  /* already migrated */
-}
+for (const filePath of files.sort()) {
+  const ext = path.extname(filePath).toLowerCase();
+  if (![".jpg", ".jpeg", ".png", ".webp"].includes(ext)) continue;
 
-// 2) Large hero PNGs -> webp (alpha)
-for (const name of ["etgjh-ss-hero.png", "etlk-hero.png"]) {
-  const src = path.join(ROOT, "products/explosion-proof", name);
+  let result;
   try {
-    await fs.access(src);
-    const dest = src.replace(/\.png$/i, ".webp");
-    const r = await toWebp(src, dest, true);
-    console.log(name, r.before, "->", r.after);
-  } catch {
-    /* gone */
-  }
-}
-
-// 3) Corrugated hose PNGs -> webp
-for (const name of ["N-TypeCorrugatedMetalHose.png", "P-TypeCorrugatedMetalHose.png"]) {
-  const src = path.join(ROOT, name);
-  try {
-    await fs.access(src);
-    const dest = src.replace(/\.png$/i, ".webp");
-    const r = await toWebp(src, dest, true);
-    console.log(name, r.before, "->", r.after);
-  } catch {
-    /* gone */
-  }
-}
-
-// 4) All JPEGs under public/images: resize + mozjpeg
-const jpegFiles = files.filter((f) => /\.jpe?g$/i.test(f));
-const results = [];
-for (const f of jpegFiles) {
-  try {
-    await fs.access(f);
-    results.push(await optimizeJpeg(f));
+    if (ext === ".webp") result = await optimizeWebp(filePath);
+    else if (ext === ".png") result = await optimizePng(filePath);
+    else result = await optimizeJpeg(filePath);
   } catch (e) {
-    if (e.code !== "ENOENT") console.error("fail", f, e.message);
+    console.error("fail", path.relative(ROOT, filePath), e.message);
+    continue;
   }
-}
-for (const r of results) {
-  if (r.skipped) continue;
-  if (r.before && r.after) {
-    console.log(
-      "jpeg",
-      path.relative(ROOT, r.filePath),
-      r.before,
-      "->",
-      r.after,
-    );
+
+  const rel = path.relative(ROOT, filePath);
+  if (result.skipped) {
+    console.log("skip", rel, result.skipped);
+    continue;
+  }
+  if (result.before != null) {
+    processed++;
+    saved += result.before - result.after;
+    console.log(rel, result.before, "->", result.after);
   }
 }
 
-console.log("done");
+console.log(
+  `\ndone: ${processed} files updated, ~${Math.round(saved / 1024)} KB saved`,
+);

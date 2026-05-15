@@ -301,7 +301,6 @@ export const explosionProofFcSubproducts = [
     href: "/products/explosion-proof-fc/etgjh",
     imageSrc: explosionProofCardImages.etgjh.imageSrc,
     imageAlt: explosionProofCardImages.etgjh.imageAlt,
-    imageFit: "contain" as const,
     description:
       "Brass NPT ends, stainless corrugated core, and brass braid for classified locations.",
   },
@@ -310,7 +309,6 @@ export const explosionProofFcSubproducts = [
     href: "/products/explosion-proof-fc/etlk",
     imageSrc: explosionProofCardImages.etlk.imageSrc,
     imageAlt: explosionProofCardImages.etlk.imageAlt,
-    imageFit: "contain" as const,
     description:
       "ETGJH-based coupling with an integrated UL explosionproof female union nut.",
   },
@@ -319,7 +317,6 @@ export const explosionProofFcSubproducts = [
     href: "/products/explosion-proof-fc/etgjh-ss",
     imageSrc: explosionProofCardImages.etgjhSs.imageSrc,
     imageAlt: explosionProofCardImages.etgjhSs.imageAlt,
-    imageFit: "contain" as const,
     description:
       "Full AISI 300-series stainless fittings, core, and braid for demanding environments.",
   },
