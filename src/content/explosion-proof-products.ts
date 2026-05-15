@@ -28,9 +28,34 @@ export const explosionProofUlListingMark = {
   imageAlt: "UL Listed mark for Copleflex explosion proof flexible coupling",
 } as const;
 
+/** Main product photos for line cards on the explosion-proof overview page. */
+const explosionProofCardImages = {
+  etgjh: {
+    imageSrc: "/images/products/explosion-proof/etgjh.jpg",
+    imageAlt:
+      "Copleflex ETGJH explosion proof flexible conduit with male NPT brass fittings",
+  },
+  etlk: {
+    imageSrc: "/images/products/explosion-proof/etlk.jpg",
+    imageAlt: "Copleflex ETLK explosion proof flexible coupling with union nut",
+  },
+  etgjhSs: {
+    imageSrc: "/images/products/explosion-proof/etgjh-ss.jpg",
+    imageAlt:
+      "Copleflex ETGJH-SS all-stainless explosion proof flexible conduit",
+  },
+} as const;
+
+/** Paragraph below the model title on ETGJH, ETLK, and ETGJH-SS pages. */
+const explosionProofProductIntro =
+  "Copleflex® is a flexible, explosionproof conduit coupling that conducts and protects electrical wiring in hazardous (classified) locations";
+
 const etgjhLead = [
-  "Copleflex® is a flexible, explosionproof conduit coupling that conducts and protects electrical wiring in hazardous (classified) locations.",
-  "Main applications: Copleflex® is primarily used where a flexible component is required to accomplish difficult bends and/or to absorb vibration and movement of connected equipment in electrical conduit systems.",
+  {
+    variant: "labeled" as const,
+    label: "Main applications:",
+    text: "Copleflex® is primarily used where a flexible component is required to accomplish difficult bends and/or to absorb vibration and movement of connected equipment in electrical conduit systems.",
+  },
   "Copleflex® hermetic seal allows it to be installed in humid environments in the presence of liquids, dust, or gases. It is an essential component in refineries, gas and gasoline service stations, oil & gas platforms, emergency power plants, mines, etc.",
 ] as const;
 
@@ -40,7 +65,6 @@ const etgjhFeatures = [
   "Outer metallic braid provides continuous electrical path.",
   "Interior insulating liner prevents the formation of electrical arcs, protects against potential grounding caused by a short circuit in the lines, prevents flame propagation, and protects conductors from abrasion under vibration conditions.",
   "NPT fittings for tight, rigid joints and ground continuity.",
-  "Male NPT threaded connection on both outer ends.",
 ] as const;
 
 const etgjhComplianceItems = [
@@ -67,10 +91,11 @@ export const explosionProofEtgjhContent = {
     imageAlt:
       "Copleflex ETGJH explosion proof flexible conduit with male NPT brass fittings",
     title: "Copleflex® model ETGJH",
-    body: "Flexible explosionproof conduit coupling with forged brass male NPT on both ends, AISI 300-series stainless corrugated core, brass wire mesh braid, and insulating inner sheath.",
+    body: explosionProofProductIntro,
     primaryCta: contactCta,
     secondaryCta: explosionProofHubCta,
   },
+  heroImageCaption: "Male NPT threaded connection on both outer ends.",
   lead: etgjhLead,
   featuresHeading: "Features",
   features: etgjhFeatures,
@@ -99,8 +124,11 @@ export const explosionProofEtgjhContent = {
 } as const satisfies IndustrialProductDetailContent;
 
 const etlkLead = [
-  "Copleflex® is a flexible, explosionproof conduit coupling that conducts and protects electrical wiring in hazardous (classified) locations.",
-  "Main applications: Copleflex® is primarily used where a flexible component is required to accomplish difficult bends and/or to absorb vibration and movement of connected equipment in electrical conduit systems.",
+  {
+    variant: "labeled" as const,
+    label: "Main applications:",
+    text: "Copleflex® is primarily used where a flexible component is required to accomplish difficult bends and/or to absorb vibration and movement of connected equipment in electrical conduit systems.",
+  },
   "Copleflex® hermetic seal allows it to be installed in humid environments in the presence of liquids, dust, or gases. It is an essential component in refineries, gas and gasoline service stations, oil & gas platforms, emergency power plants, mines, etc.",
 ] as const;
 
@@ -110,7 +138,6 @@ const etlkFeatures = [
   "Outer metallic braid provides continuous electrical path.",
   "Interior insulating liner prevents the formation of electrical arcs, protects against potential grounding caused by a short circuit in the lines, prevents flame propagation, and protects conductors from abrasion under vibration conditions.",
   "NPT fittings for tight, rigid joints and ground continuity.",
-  "The ETLK flexible coupling is made up of a Copleflex® model ETGJH and it has an integrated UL female union nut at one end that is explosionproof.",
 ] as const;
 
 const etlkComplianceItems = [
@@ -137,10 +164,22 @@ export const explosionProofEtlkContent = {
     imageSrc: "/images/products/explosion-proof/etlk.jpg",
     imageAlt: "Copleflex ETLK explosion proof flexible coupling with union nut",
     title: "Copleflex® model ETLK",
-    body: "Made from Copleflex® model ETGJH with an integrated UL explosionproof female union nut at one end (copper-free aluminum).",
+    body: explosionProofProductIntro,
     primaryCta: contactCta,
     secondaryCta: explosionProofHubCta,
   },
+  heroSlides: [
+    {
+      imageSrc: "/images/products/explosion-proof/etlk.jpg",
+      imageAlt: "Copleflex ETLK explosion proof flexible coupling with union nut",
+    },
+    {
+      imageSrc: "/images/products/explosion-proof/etlk-hero.webp",
+      imageAlt: "Alternate view of Copleflex ETLK flexible coupling",
+    },
+  ],
+  heroImageCaption:
+    "The ETLK flexible coupling is made up of a Copleflex® model ETGJH and it has an integrated UL female union nut at one end that is explosionproof.",
   lead: etlkLead,
   featuresHeading: "Features",
   features: etlkFeatures,
@@ -170,8 +209,11 @@ export const explosionProofEtlkContent = {
 } as const satisfies IndustrialProductDetailContent;
 
 const etgjhSsLead = [
-  "Copleflex® is a flexible, explosionproof conduit coupling that conducts and protects electrical wiring in hazardous (classified) locations.",
-  "Main applications: Copleflex® is primarily used where a flexible component is required to accomplish difficult bends and/or to absorb vibration and movement of connected equipment in electrical conduit systems.",
+  {
+    variant: "labeled" as const,
+    label: "Main applications:",
+    text: "Copleflex® is primarily used where a flexible component is required to accomplish difficult bends and/or to absorb vibration and movement of connected equipment in electrical conduit systems.",
+  },
   "Copleflex® hermetic seal allows it to be installed in humid environments in the presence of liquids, dust, or gases. It is an essential component in refineries, gas and gasoline service stations, oil & gas platforms, emergency power plants, mines, etc.",
 ] as const;
 
@@ -181,7 +223,6 @@ const etgjhSsFeatures = [
   "Outer metallic braid provides continuous electrical path.",
   "Interior insulating liner prevents the formation of electrical arcs, protects against potential grounding caused by a short circuit in the lines, prevents flame propagation, and protects conductors from abrasion under vibration conditions.",
   "NPT fittings for tight, rigid joints and ground continuity.",
-  "Male NPT threaded connection on both outer ends.",
 ] as const;
 
 const etgjhSsComplianceItems = [
@@ -210,10 +251,23 @@ export const explosionProofEtgjhSsContent = {
     imageAlt:
       "Copleflex ETGJH-SS all-stainless explosion proof flexible conduit",
     title: "Copleflex® model ETGJH-SS",
-    body: "All-AISI 300-series stainless: male NPT connections, corrugated metal tubing, wire mesh braid, and insulating inner sleeve—for corrosive or washdown-heavy environments.",
+    body: explosionProofProductIntro,
     primaryCta: contactCta,
     secondaryCta: explosionProofHubCta,
   },
+  heroSlides: [
+    {
+      imageSrc: "/images/products/explosion-proof/etgjh-ss.jpg",
+      imageAlt:
+        "Copleflex ETGJH-SS all-stainless explosion proof flexible conduit",
+    },
+    {
+      imageSrc: "/images/products/explosion-proof/etgjh-ss-hero.webp",
+      imageAlt:
+        "Alternate view of Copleflex ETGJH-SS stainless flexible conduit",
+    },
+  ],
+  heroImageCaption: "Male NPT threaded connection on both outer ends.",
   lead: etgjhSsLead,
   featuresHeading: "Features",
   features: etgjhSsFeatures,
@@ -245,24 +299,27 @@ export const explosionProofFcSubproducts = [
   {
     title: explosionProofEtgjhContent.pageTitle,
     href: "/products/explosion-proof-fc/etgjh",
-    imageSrc: explosionProofEtgjhContent.hero.imageSrc,
-    imageAlt: explosionProofEtgjhContent.hero.imageAlt,
+    imageSrc: explosionProofCardImages.etgjh.imageSrc,
+    imageAlt: explosionProofCardImages.etgjh.imageAlt,
+    imageFit: "contain" as const,
     description:
       "Brass NPT ends, stainless corrugated core, and brass braid for classified locations.",
   },
   {
     title: explosionProofEtlkContent.pageTitle,
     href: "/products/explosion-proof-fc/etlk",
-    imageSrc: explosionProofEtlkContent.hero.imageSrc,
-    imageAlt: explosionProofEtlkContent.hero.imageAlt,
+    imageSrc: explosionProofCardImages.etlk.imageSrc,
+    imageAlt: explosionProofCardImages.etlk.imageAlt,
+    imageFit: "contain" as const,
     description:
       "ETGJH-based coupling with an integrated UL explosionproof female union nut.",
   },
   {
     title: explosionProofEtgjhSsContent.pageTitle,
     href: "/products/explosion-proof-fc/etgjh-ss",
-    imageSrc: explosionProofEtgjhSsContent.hero.imageSrc,
-    imageAlt: explosionProofEtgjhSsContent.hero.imageAlt,
+    imageSrc: explosionProofCardImages.etgjhSs.imageSrc,
+    imageAlt: explosionProofCardImages.etgjhSs.imageAlt,
+    imageFit: "contain" as const,
     description:
       "Full AISI 300-series stainless fittings, core, and braid for demanding environments.",
   },

@@ -5,6 +5,7 @@ import { ContactSection } from "@/components/contact-section";
 import { Button } from "@/components/ui/button";
 import { CorrugatedNTypeSpecTable } from "@/components/corrugated-n-type-spec-table";
 import { CorrugatedPTypeSpecTable } from "@/components/corrugated-p-type-spec-table";
+import { IndustrialHeroCarousel } from "@/components/industrial-hero-carousel";
 import type { IndustrialProductDetailContent } from "@/content/corrugated-products";
 
 type IndustrialProductPageProps = {
@@ -17,6 +18,8 @@ export function IndustrialProductPageView({
   const {
     breadcrumb,
     hero,
+    heroSlides,
+    heroImageCaption,
     lead,
     featuresHeading,
     features,
@@ -61,16 +64,28 @@ export function IndustrialProductPageView({
       <section className="w-full max-w-8xl mx-auto px-4 py-10 sm:px-6 lg:px-16 lg:py-14">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start lg:gap-14">
           <div className="lg:sticky lg:top-24 lg:self-start">
-            <div className="relative aspect-3/3 w-full overflow-hidden rounded-2xl border border-border bg-muted/30">
-              <Image
-                src={hero.imageSrc}
-                alt={hero.imageAlt}
-                fill
-                className="object-contain"
+            {heroSlides && heroSlides.length >= 2 ? (
+              <IndustrialHeroCarousel
+                slides={heroSlides}
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                priority
               />
-            </div>
+            ) : (
+              <div className="relative aspect-3/3 w-full overflow-hidden rounded-2xl border border-border bg-muted/30">
+                <Image
+                  src={hero.imageSrc}
+                  alt={hero.imageAlt}
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
+                />
+              </div>
+            )}
+            {heroImageCaption ? (
+              <p className="mt-4 text-center text-sm leading-relaxed text-muted-foreground sm:text-base">
+                {heroImageCaption}
+              </p>
+            ) : null}
           </div>
 
           <div className="min-w-0">
@@ -96,9 +111,19 @@ export function IndustrialProductPageView({
             </div>
 
             <div className="mt-12 space-y-6 border-t border-border pt-12 text-base leading-relaxed text-muted-foreground sm:text-lg">
-              {lead.map((p) => (
-                <p key={p}>{p}</p>
-              ))}
+              {lead.map((item, i) =>
+                typeof item === "string" ? (
+                  <p key={i}>{item}</p>
+                ) : (
+                  <p key={i}>
+                    <strong className="font-semibold text-foreground">
+                      {item.label}
+                    </strong>
+                    <br />
+                    {item.text}
+                  </p>
+                ),
+              )}
             </div>
 
             <div className="mt-12 border-t border-border pt-12">

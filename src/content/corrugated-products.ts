@@ -4,6 +4,11 @@ import type { HeroCta } from "@/components/hero";
 
 export type ProductBreadcrumbItem = { label: string; href: string };
 
+/** One body paragraph, or a bold label with the rest on the next line (e.g. Main applications). */
+export type IndustrialProductLeadItem =
+  | string
+  | { variant: "labeled"; label: string; text: string };
+
 export type IndustrialProductDetailContent = {
   slug: string;
   pageTitle: string;
@@ -17,7 +22,11 @@ export type IndustrialProductDetailContent = {
     primaryCta: HeroCta;
     secondaryCta: HeroCta;
   };
-  lead: readonly string[];
+  /** When 2+ slides, the hero column shows a carousel instead of a single image. */
+  heroSlides?: readonly { imageSrc: string; imageAlt: string }[];
+  /** Optional caption shown below the hero image or carousel. */
+  heroImageCaption?: string;
+  lead: readonly IndustrialProductLeadItem[];
   featuresHeading: string;
   features: readonly string[];
   spec: {
