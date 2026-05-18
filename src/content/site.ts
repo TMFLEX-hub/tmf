@@ -102,7 +102,7 @@ export const productsContent = {
     {
       title: "Corrugated Hose",
       href: "/products/corrugated-hose",
-      imageSrc: "/images/homepage-3.jpg",
+      imageSrc: "/images/N-TypeCorrugatedMetalHose.png",
       imageAlt: "Corrugated hose",
     },
     {
@@ -114,7 +114,7 @@ export const productsContent = {
     {
       title: "Explosion Proof Flexible Conduit",
       href: "/products/explosion-proof-fc",
-      imageSrc: "/images/products/explosion-proof/etgjh.jpg",
+      imageSrc: "/images/products/explosion-proof/etgjh.png",
       imageAlt: "Copleflex ETGJH explosion proof flexible conduit",
     },
   ],
@@ -348,7 +348,7 @@ export const productsLandingContent = {
 export const productCategoryContent = {
   corrugated: {
     hero: {
-      imageSrc: "/images/homepage-3.jpg",
+      imageSrc: "/images/N-TypeCorrugatedMetalHose.png",
       imageAlt: "Corrugated hose",
       title: "Corrugated Hose",
       body: "Annular and omega stainless-steel corrugated hose families for fluid transfer, vibration absorption, and demanding industrial service.",
@@ -384,7 +384,7 @@ export const productCategoryContent = {
   },
   explosionProofFc: {
     hero: {
-      imageSrc: "/images/products/explosion-proof/etgjh.jpg",
+      imageSrc: "/images/products/explosion-proof/etgjh.png",
       imageAlt: "Copleflex ETGJH explosion proof flexible conduit",
       title: "Explosion Proof Flexible Conduit",
       body: "Copleflex® flexible conduit couplings for Class I, II, and III hazardous locations—brass and all-stainless models plus the ETLK union configuration.",

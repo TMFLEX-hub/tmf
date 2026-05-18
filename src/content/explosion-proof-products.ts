@@ -24,23 +24,23 @@ export const explosionProofBrochurePdf = {
 } as const;
 
 export const explosionProofUlListingMark = {
-  imageSrc: "/images/products/explosion-proof/ul-listed.webp",
+  imageSrc: "/images/products/explosion-proof/ul-listed.png",
   imageAlt: "UL Listed mark for Copleflex explosion proof flexible coupling",
 } as const;
 
 /** Main product photos for line cards on the explosion-proof overview page. */
 const explosionProofCardImages = {
   etgjh: {
-    imageSrc: "/images/products/explosion-proof/etgjh.jpg",
+    imageSrc: "/images/products/explosion-proof/etgjh.png",
     imageAlt:
       "Copleflex ETGJH explosion proof flexible conduit with male NPT brass fittings",
   },
   etlk: {
-    imageSrc: "/images/products/explosion-proof/etlk.jpg",
+    imageSrc: "/images/products/explosion-proof/etlk.png",
     imageAlt: "Copleflex ETLK explosion proof flexible coupling with union nut",
   },
   etgjhSs: {
-    imageSrc: "/images/products/explosion-proof/etgjh-ss.jpg",
+    imageSrc: "/images/products/explosion-proof/etgjh-ss.png",
     imageAlt:
       "Copleflex ETGJH-SS all-stainless explosion proof flexible conduit",
   },
@@ -87,7 +87,7 @@ export const explosionProofEtgjhContent = {
     { label: "ETGJH", href: "/products/explosion-proof-fc/etgjh" },
   ],
   hero: {
-    imageSrc: "/images/products/explosion-proof/etgjh.jpg",
+    imageSrc: "/images/products/explosion-proof/etgjh.png",
     imageAlt:
       "Copleflex ETGJH explosion proof flexible conduit with male NPT brass fittings",
     title: "Copleflex® model ETGJH",
@@ -95,6 +95,17 @@ export const explosionProofEtgjhContent = {
     primaryCta: contactCta,
     secondaryCta: explosionProofHubCta,
   },
+  heroSlides: [
+    {
+      imageSrc: "/images/products/explosion-proof/etgjh.png",
+      imageAlt:
+        "Copleflex ETGJH explosion proof flexible conduit with male NPT brass fittings",
+    },
+    {
+      imageSrc: "/images/products/explosion-proof/etgjh-hero.png",
+      imageAlt: "ETGJH explosion proof flexible conduit detail view",
+    },
+  ],
   heroImageCaption: "Male NPT threaded connection on both outer ends.",
   lead: etgjhLead,
   featuresHeading: "Features",
@@ -161,7 +172,7 @@ export const explosionProofEtlkContent = {
     { label: "ETLK", href: "/products/explosion-proof-fc/etlk" },
   ],
   hero: {
-    imageSrc: "/images/products/explosion-proof/etlk.jpg",
+    imageSrc: "/images/products/explosion-proof/etlk.png",
     imageAlt: "Copleflex ETLK explosion proof flexible coupling with union nut",
     title: "Copleflex® model ETLK",
     body: explosionProofProductIntro,
@@ -170,11 +181,11 @@ export const explosionProofEtlkContent = {
   },
   heroSlides: [
     {
-      imageSrc: "/images/products/explosion-proof/etlk.jpg",
+      imageSrc: "/images/products/explosion-proof/etlk.png",
       imageAlt: "Copleflex ETLK explosion proof flexible coupling with union nut",
     },
     {
-      imageSrc: "/images/products/explosion-proof/etlk-hero.webp",
+      imageSrc: "/images/products/explosion-proof/etlk-hero.png",
       imageAlt: "Alternate view of Copleflex ETLK flexible coupling",
     },
   ],
@@ -247,7 +258,7 @@ export const explosionProofEtgjhSsContent = {
     { label: "ETGJH-SS", href: "/products/explosion-proof-fc/etgjh-ss" },
   ],
   hero: {
-    imageSrc: "/images/products/explosion-proof/etgjh-ss.jpg",
+    imageSrc: "/images/products/explosion-proof/etgjh-ss.png",
     imageAlt:
       "Copleflex ETGJH-SS all-stainless explosion proof flexible conduit",
     title: "Copleflex® model ETGJH-SS",
@@ -257,12 +268,12 @@ export const explosionProofEtgjhSsContent = {
   },
   heroSlides: [
     {
-      imageSrc: "/images/products/explosion-proof/etgjh-ss.jpg",
+      imageSrc: "/images/products/explosion-proof/etgjh-ss.png",
       imageAlt:
         "Copleflex ETGJH-SS all-stainless explosion proof flexible conduit",
     },
     {
-      imageSrc: "/images/products/explosion-proof/etgjh-ss-hero.webp",
+      imageSrc: "/images/products/explosion-proof/etgjh-ss-hero.png",
       imageAlt:
         "Alternate view of Copleflex ETGJH-SS stainless flexible conduit",
     },
